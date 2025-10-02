@@ -8,13 +8,20 @@ const getSum = () => {
   prices.forEach(p => {
     total += parseInt(p.textContent);
   });
-  const table = document.querySelector("table");
-  const row = document.createElement("tr");
-  const cell = document.createElement("td");
-  cell.colSpan = 2;
-  cell.textContent = "Total Price: " + total;
-  row.appendChild(cell);
-  table.appendChild(row);
+
+  let ansRow = document.querySelector("#ans");
+  if (ansRow) {
+    ansRow.textContent = "Total Price: " + total;
+  } else {
+    const table = document.querySelector("table");
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = 2;
+    cell.id = "ans";
+    cell.textContent = "Total Price: " + total;
+    row.appendChild(cell);
+    table.appendChild(row);
+  }
 };
 
 getSumBtn.addEventListener("click", getSum);
